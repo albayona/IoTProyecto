@@ -55,54 +55,6 @@ def get_last_measure(station, measurement):
     return(last_measure.value)
 
 
-class LogoutView(TemplateView):
-    def get(self, request):
-        logout(request)
-        return HttpResponseRedirect('/')
-
-
-class HistoricalView(TemplateView):
-    template_name = 'historical.html'
-
-
-    def get(self, request, **kwargs):
-        if request.user == None or not request.user.is_authenticated:
-            return HttpResponseRedirect("/login/")
-        return render(request, self.template_name)
-
-
-def get_daterange(request):
-    try:
-        start = datetime.fromtimestamp(
-            float(request.GET.get('from', None))/1000)
-    except:
-        start = None
-    try:
-        end = datetime.fromtimestamp(
-            float(request.GET.get('to', None))/1000)
-    except:
-        end = None
-    if start == None and end == None:
-        start = datetime.now()
-        start = start - \
-            dateutil.relativedelta.relativedelta(
-                weeks=1)
-        end = datetime.now()
-        end += dateutil.relativedelta.relativedelta(days=1)
-    elif end == None:
-        end = datetime.now()
-    elif start == None:
-        start = datetime.fromtimestamp(0)
-
-    return start, end
-
-
-'''
-Filtro para formatear datos en el template de index
-'''
-
-
-@ register.filter
 def get_statistic(dictionary, key):
     if type(dictionary) == str:
         dictionary = json.loads(dictionary)
