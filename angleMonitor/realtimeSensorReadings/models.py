@@ -35,9 +35,6 @@ class User(models.Model):
 class Measurement(models.Model):
     name = models.CharField(max_length=50, blank=False)
     unit = models.CharField(max_length=50, blank=False)
-    max_value = models.FloatField(null=True, blank=True, default=None)
-    min_value = models.FloatField(null=True, blank=True, default=None)
-    active = active = models.BooleanField(default=True)
 
     def str(self):
         return '{} {}'.format(self.name, self.unit)

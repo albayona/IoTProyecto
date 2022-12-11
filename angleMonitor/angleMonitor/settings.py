@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_crontab',
     'realtimeSensorReadings',
-    'data_generator',
+    'db_updater',
 ]
 
 CRONJOBS = [

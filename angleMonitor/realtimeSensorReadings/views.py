@@ -1,15 +1,9 @@
 import json
 from datetime import datetime
 
-import dateutil.relativedelta
-from django.contrib.auth import login, logout
-from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
 from django.template.defaulttags import register
-from django.views.generic import TemplateView
 
-from realtimeSensorReadings.forms import LoginForm
-from .models import  Measurement, Role, User, Reading
+from .models import Measurement, Role, User, Reading
 
 
 def get_or_create_role(name):
