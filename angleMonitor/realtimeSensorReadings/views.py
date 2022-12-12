@@ -48,21 +48,3 @@ def get_last_measure(station, measurement):
     print(datetime.now())
     return(last_measure.value)
 
-
-def get_statistic(dictionary, key):
-    if type(dictionary) == str:
-        dictionary = json.loads(dictionary)
-    if key is None:
-        return None
-    keys = [k.strip() for k in key.split(',')]
-    return dictionary.get(keys[0]).get(keys[1])
-
-
-'''
-Filtro para formatear datos en los templates
-'''
-
-
-@ register.filter
-def add_str(str1, str2):
-    return str1 + str2
